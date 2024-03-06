@@ -187,7 +187,7 @@ async def boombaCallback(_, query):
         else:
         	  LOGGER.error(f"Web paste failed : {str(err)}")
     elif data[2] == "botpm":
-        await query.answer(url=f"https://t.me/{bot_name}?start=aeon")
+        await query.answer(url=f"https://t.me/{bot_name}?start=boomba")
     elif data[2] == "pmc":
         await query.answer(url=f"https://t.me/{bot_name}?start=pmc")
     else:
