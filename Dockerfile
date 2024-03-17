@@ -1,4 +1,4 @@
-FROM TOICTONY/booomba:heroku
+FROM TOICTONY/booomba:latest 
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
