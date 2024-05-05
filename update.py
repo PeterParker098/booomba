@@ -50,7 +50,7 @@ if DATABASE_URL:
 
 UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
 if len(UPSTREAM_REPO) == 0:
-    UPSTREAM_REPO = 'https://github.com/PeterParker098/booomba'
+    UPSTREAM_REPO = 'https://PeterParker098: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@github.com/PeterParker098/booomba'
 
 UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
 if len(UPSTREAM_BRANCH) == 0:
