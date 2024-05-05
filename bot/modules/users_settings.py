@@ -38,7 +38,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
     name = from_user.mention(style="html")
     buttons = ButtonMaker()
     thumbpath = f"Thumbnails/{user_id}.jpg"
-    rclone_path = f'tanha/{user_id}.conf'
+    rclone_path = f'rclone/{user_id}.conf'
     user_dict = user_data.get(user_id, {})
     if key is None:
         buttons.ibutton("Universal", f"userset {user_id} universal")
@@ -291,7 +291,7 @@ async def edit_user_settings(client, query):
     message = query.message
     data = query.data.split()
     thumb_path = f'Thumbnails/{user_id}.jpg'
-    rclone_path = f'tanha/{user_id}.conf'
+    rclone_path = f'rclone/{user_id}.conf'
     user_dict = user_data.get(user_id, {})
     if user_id != int(data[1]):
         await query.answer("Not Yours!", show_alert=True)
@@ -481,7 +481,7 @@ async def edit_user_settings(client, query):
         user_id = int(data[3])
         await query.answer()
         thumb_path = f'Thumbnails/{user_id}.jpg'
-        rclone_path = f'tanha/{user_id}.conf'
+        rclone_path = f'rclone/{user_id}.conf'
         if await aiopath.exists(thumb_path):
             await aioremove(thumb_path)
         if await aiopath.exists(rclone_path):
