@@ -61,6 +61,9 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
         buttons.ibutton("Remname", f"userset {user_id} remname")
         remname = user_dict.get('remname', 'Not Exists')
 
+        buttons.ibutton("Metadata Text", f"userset {user_id} metadatatext")
+        remname = user_dict.get('metadatatext', 'Not Exists')
+
 
         text = f'<b>Universal Settings for {name}</b>\n\n'
         text += f'<b>• YT-DLP Options:</b> <b><code>{ytopt}</code></b>\n'
