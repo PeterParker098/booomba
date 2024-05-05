@@ -167,7 +167,7 @@ async def boombaCallback(_, query):
             startLine = f"<b>Showing last {ind} lines from log.txt:</b> \n\n----------<b>START LOG</b>----------\n\n"
             endLine = "\n----------<b>END LOG</b>----------"
             btn = ButtonMaker()
-            btn.ibutton('Close', f'boomba {user_id} close')
+            btn.ibutton('Close', f'booomba {user_id} close')
             reply_message = await sendMessage(message, startLine + escape(Loglines) + endLine, btn.build_menu(1))
             await query.edit_message_reply_markup(None)
             await deleteMessage(message)
@@ -187,7 +187,7 @@ async def boombaCallback(_, query):
         else:
         	  LOGGER.error(f"Web paste failed : {str(err)}")
     elif data[2] == "botpm":
-        await query.answer(url=f"https://t.me/{bot_name}?start=boomba")
+        await query.answer(url=f"https://t.me/{bot_name}?start=booomba")
     elif data[2] == "pmc":
         await query.answer(url=f"https://t.me/{bot_name}?start=pmc")
     else:
@@ -197,8 +197,8 @@ async def boombaCallback(_, query):
 @new_task
 async def log(_, message):
     buttons = ButtonMaker()
-    buttons.ibutton('Log display', f'boomba {message.from_user.id} logdisplay')
-    buttons.ibutton('Web paste', f'boomba {message.from_user.id} webpaste')
+    buttons.ibutton('Log display', f'booomba {message.from_user.id} logdisplay')
+    buttons.ibutton('Web paste', f'booomba {message.from_user.id} webpaste')
     reply_message = await sendFile(message, 'log.txt', buttons=buttons.build_menu(1))
     await deleteMessage(message)
     await five_minute_del(reply_message)
@@ -254,7 +254,7 @@ async def main():
     bot.add_handler(MessageHandler(ping, filters=command(BotCommands.PingCommand) & CustomFilters.authorized))
     bot.add_handler(MessageHandler(bot_help, filters=command(BotCommands.HelpCommand) & CustomFilters.authorized))
     bot.add_handler(MessageHandler(stats, filters=command(BotCommands.StatsCommand) & CustomFilters.authorized))
-    bot.add_handler(CallbackQueryHandler(boombaCallback, filters=regex(r'^boomba')))
+    bot.add_handler(CallbackQueryHandler(booombaCallback, filters=regex(r'^booomba')))
     LOGGER.info("Private Bot Started!")
     signal(SIGINT, exit_clean_up)
 
