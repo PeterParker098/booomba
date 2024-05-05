@@ -139,7 +139,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
         elif key == 'yt_opt':
             set_exist = 'Not Exists' if (val:=user_dict.get('yt_opt', config_dict.get('YT_DLP_OPTIONS', ''))) == '' else val
             text += f"<b>YT-DLP Options :</b> <code>{escape(set_exist)}</code>\n\n"
-        elif key in ['prefix', 'remname', 'suffix', 'lcaption', 'ldump']:
+        elif key in ['prefix', 'remname', 'suffix', 'lcaption', 'ldump', 'metadatatext']:
             set_exist = 'Not Exists' if (val:=user_dict.get(key, '')) == '' else val
             text += f"<b>Filename {fname_dict[key]} :</b> {set_exist}\n\n"
         elif key == 'user_tds':
@@ -408,7 +408,7 @@ async def edit_user_settings(client, query):
         pfunc = partial(set_custom, pre_event=query, key=data[2])
         rfunc = partial(update_user_settings, query, data[2], 'mirror')
         await event_handler(client, query, pfunc, rfunc)
-    elif data[2] in ['prefix', 'suffix', 'remname', 'metadatext']:
+    elif data[2] in ['prefix', 'suffix', 'remname', 'metadatatext']:
         handler_dict[user_id] = False
         await query.answer()
         edit_mode = len(data) == 4
