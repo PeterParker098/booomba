@@ -29,7 +29,7 @@ async def edit_video_titles(user_id, file_path):
         except:
             subtitle_stream_count = 0
 
-        cmd = ["ffmpeg", "-i", file_path, "-map", "0", "-c", "copy"]
+        cmd = ["render", "-i", file_path, "-map", "0", "-c", "copy"]
         cmd += ["-metadata:s:v:0", f"title={new_title}"]
         for i in range(audio_stream_count):
             cmd += ["-metadata:s:a:{}".format(i), f"title={new_title}"]
